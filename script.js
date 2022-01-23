@@ -6,6 +6,7 @@ const buttons = document.querySelectorAll('.btn-input');
 const reset = document.querySelector('.reset');
 const totalTip = document.querySelector('.totaltip');
 const totalBill = document.querySelector('.total-bill')
+const customTip = document.querySelector('.custom-input')
 
 function tipAmount(value) {
     if (bill.value != 0 && person.value != 0 && value != 0) {
@@ -33,17 +34,34 @@ function tipAmount(value) {
     }
 }
 
-// function total(value) {
-//     if (bill.value != 0 && person.value != 0 && value != 0) {
-//         return (bill.value / person.value) + tipAmount(value);
-//     } else if (person.value == 0 || person.value == '') {
-//         bill.innerText = 'Can\'t be zero';
-//         return 0;
-//     } else if (typeof person.value == String) {
-//         bill.innerText = 'Unvalid bill';
-//         return 0;
-//     }
-// }
+function custom(value) {
+    if (Number(value.value) != 0 || Number(value.value) != '') {
+        return [(((bill.value * value.value) / 100) / person.value), (bill.value / person.value)]
+    } else if (Number(value.value) == NaN) {
+        customTip.style.border = '2px solid red';
+        return [0, 0];
+    } else if ((bill.value == 0 || bill.value == '') && (person.value == 0 || person.value == '')) {
+        erorBill.innerText = 'Can\'t be zero';
+        erorPeople.innerText = 'Can\'t be zero';
+        return [0, 0];
+    } else if ((typeof bill.value == String) && (typeof person.value == String)) {
+        erorBill.innerText = 'Unvalid bill';
+        erorPeople.innerText = 'Unvalid bill';
+        return [0, 0];
+    } else if (person.value == 0 || person.value == '') {
+        erorPeople.innerText = 'Can\'t be zero';
+        return [0, 0];
+    } else if (typeof person.value == String) {
+        erorPeople.innerText = 'Unvalid bill';
+        return [0, 0];
+    } else if (bill.value == 0 || bill.value == '') {
+        erorBill.innerText = 'Can\'t be zero';
+        return [0, 0];
+    } else if (typeof bill.value == String) {
+        erorBill.innerText = 'Unvalid bill';
+        return [0, 0];
+    }
+}
 
 buttons.forEach(function(btn) {
     btn.addEventListener('click', function() {
@@ -73,3 +91,14 @@ reset.addEventListener('click', function() {
     bill.value = '';
     person.value = '';
 })
+
+customTip.addEventListener('input', function() {
+    buttons.forEach(function(btnSelect) {
+        btnSelect.className = 'btn-input';
+        erorBill.innerText = '';
+        erorPeople.innerText = '';
+    })
+    totalTip.innerText = custom(customTip)[0].toFixed(2);
+    totalBill.innerText = custom(customTip).reduce((acc, cur) => acc + cur).toFixed(2);
+})
+console.log(Number(customTip.value))
