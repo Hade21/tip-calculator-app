@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="./fontawesome-free-5.15.4-web/css/all.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Frontend Mentor | Tip calculator app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+        
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="left-side">
+                <div class="bill-text">
+                    <p class="bill">Bill</p>
+                    <p class="bill error">Can't be zero</p>
+                </div>
+                <div class="preview-amount">
+                    <i class="fas fa-dollar-sign"></i>
+                    <input type="text" id="amount" placeholder="0">
+                </div>
+                <p class="select">Select Tip %</p>
+                <div class="select-tip">
+                    <input type="button" value="5%" class="btn-input">
+                    <input type="button" value="10%" class="btn-input">
+                    <input type="button" value="15%" class="btn-input">
+                    <input type="button" value="25%" class="btn-input">
+                    <input type="button" value="50%" class="btn-input">
+                    <input type="text" value="Custom" class="custom-input">
+                </div>
+                <div class="people-text">
+                    <p class="people">Number of people</p>
+                    <p class="people error">Can't be zero</p>
+                </div>
+                <div class="preview-person">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="0" id="number-people">
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="tip-amount">
+                    <h3>Tip Amount</h3>
+                    <p>/ person</p>
+                    <h1>&dollar;0.00</h1>
+                </div>
+                <div class="total">
+                    <h3>Total</h3>
+                    <p>/ person</p>
+                    <h1>&dollar;0.00</h1>
+                </div>
+                <button type="reset" value="reset" class="reset">RESET</button>
+            </div>
+        </div>
+    </section>
+    <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. Coded by <a href="https://frontendmentor.io/profile/hade21">Rohman</a>.
+    </div>
+</body>
+
+</html>
